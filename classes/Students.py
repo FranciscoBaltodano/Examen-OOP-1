@@ -28,25 +28,6 @@ class Students:
         collection.delete_one( filterToUse )
 
     @staticmethod
-    def get_list(db):
-        collection = db["Students"]
-        estudiantes = collection.find()
-
-        list_estudiantes = []
-        for e in estudiantes:
-            temp_estudiante = Students(
-                e["_id"]
-                , e["nombre_completo"]
-                , e["cursos_aprobados"]
-                , e["cursos_reprobados"]
-                , e["edad"]
-                , e["carrera"]
-            )
-
-            list_estudiantes.append(temp_estudiante)
-        return list_estudiantes
-
-    @staticmethod
     def delete_all(db):
         collection = db["Students"]
         collection.delete_many({})

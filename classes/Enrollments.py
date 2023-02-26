@@ -1,11 +1,13 @@
 from classes.data import DATA
 
-class Enrrolments:
+class Enrollments:
 
-    def __init__(self, nombre, id = ""):
-        self.nombre = nombre
+    def __init__(self, nombre_alumno, curso, aprobo, id = ""):
+        self.nombre_alumno = nombre_alumno
+        self.curso = curso
+        self.aprobo = aprobo
         self.__id = id
-        self.__collection = "Careers"
+        self.__collection = "Enrollments"
 
     def save(self, db):
         collection = db[self.__collection]
@@ -23,30 +25,24 @@ class Enrrolments:
         filterToUse = { '_id' : self.__id }
         collection.delete_one( filterToUse )
 
-
-
-    @staticmethod
-    def get_list(db):
-        collection = db["Careers"]
-        carreras = collection.find()
-
-        list_carreras = []
-        for e in carreras:
-            temp_carrera = Careers(
-                e["_id"] 
-            )
-
-            list_carreras.append(temp_carrera)
-        return list_carreras
-
     @staticmethod
     def delete_all(db):
-        collection = db["Careers"]
+        collection = db["Enrollments"]
         collection.delete_many({})
 
     @staticmethod
     def save_all(db):
-        collection = db["Careers"]
-        carrera_unica = list(set([objeto["carrera"]for objeto in DATA]))
-        for carrera in carrera_unica:
-            collection.insert_one({"nombre_carrera":carrera})
+        collection = db["Enrollments"]
+        for obj in DATA:
+            name = obj["nombre_completo"]
+            course_aprobade = obj["cursos_aprobados"]
+            course_reprobade = obj["cursos_reprobados"]
+
+            for aprobada in course_aprobade:
+                enrollment= {"name": name, "course": aprobada, "aprobo": True}
+                collection.insert_one(enrollment)
+
+            for reprobada in course_reprobade:
+                enrollment= {"name": name, "course": reprobada, "aprobo": False}
+                collection.insert_one(enrollment)
+

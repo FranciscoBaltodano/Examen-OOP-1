@@ -23,22 +23,6 @@ class Careers:
         filterToUse = { '_id' : self.__id }
         collection.delete_one( filterToUse )
 
-
-
-    @staticmethod
-    def get_list(db):
-        collection = db["Careers"]
-        carreras = collection.find()
-
-        list_carreras = []
-        for e in carreras:
-            temp_carrera = Careers(
-                e["_id"] 
-            )
-
-            list_carreras.append(temp_carrera)
-        return list_carreras
-
     @staticmethod
     def delete_all(db):
         collection = db["Careers"]
@@ -46,7 +30,12 @@ class Careers:
 
     @staticmethod
     def save_all(db):
+        #asignamos la coleccion
         collection = db["Careers"]
+        #usamos list para poder iterar y con set evitamos que las carreras se repitan
+        #luego recorremos con un for in todos los objetos del DATA
         carrera_unica = list(set([objeto["carrera"]for objeto in DATA]))
         for carrera in carrera_unica:
-            collection.insert_one({"nombre_carrera":carrera})
+            #despues de haber recorrido el data y conseguir que las clases duplicadas desaparecieran
+            #almacenamos con un insert__one en la coleccion
+            collection.insert_one({"name_career":carrera})

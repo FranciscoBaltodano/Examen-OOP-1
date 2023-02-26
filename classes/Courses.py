@@ -23,56 +23,26 @@ class Courses:
         filterToUse = { '_id' : self.__id }
         collection.delete_one( filterToUse )
 
-
-
-    @staticmethod
-    def get_list(db):
-        collection = db["Courses"]
-        carreras = collection.find()
-
-        list_carreras = []
-        for e in carreras:
-            temp_carrera = Careers(
-                e["_id"] 
-            )
-
-            list_carreras.append(temp_carrera)
-        return list_carreras
-
     @staticmethod
     def delete_all(db):
         collection = db["Courses"]
         collection.delete_many({})
 
-
     @staticmethod
     def save_all(db):
+        #asignamos la coleccion
         collection = db["Courses"]
-        
+        #creamos un set para que los cursos almacenados no se repitan
         course_unic = set()
+        #con un for in recorremos DATA
         for obj in DATA:
             for course in obj["cursos_aprobados"] + obj["cursos_reprobados"]:
+                #verificamos que nuestro curso no este agregado para asi, agregarlo
                 if course not in course_unic:
+                    #si no existia, lo agregamos con el insrt_one
                     collection.insert_one({"name_course": course})
+                    #agregamos el curso al course_unic para que sea otro de los cursos que no hay que duplicar
                     course_unic.add(course)
 
         for document in collection.find():
             print(document)
-
-    # @staticmethod
-    # def save_all(db):
-    #     collection = db["Courses"]
-    #     name_courses = []
-        
-    #     for obj in DATA:
-            
-    #         for course in obj["cursos_aprobados"]:
-    #             if course not in name_courses:
-    #                 name_courses.append(course)
-            
-    #         for course in obj["cursos_reprobados"]:
-    #             if course not in name_courses:
-    #                 name_courses.append(course)
-        
-    #     document = {"name_course": name_courses}
-    #     collection.insert_one(document)
