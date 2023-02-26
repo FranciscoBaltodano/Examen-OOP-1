@@ -2,7 +2,7 @@
 
 ## Datos Generales
 <p align="center">
-  <img src="img/ExamenPOO.png" alt="Datos Generales" style="text-align:center" />
+  <img src="img/ExamenPOO.PNG" alt="Datos Generales" style="text-align:center" />
 </p>
 
 ## Careers
