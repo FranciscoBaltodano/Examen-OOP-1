@@ -7,25 +7,32 @@ def main():
 
     Students.delete_all(db)
     Students.save_all(db)
+    #En lugar de pipeline.create_students()
     Students("123", "José 201", "0", "0", "23", "Medicina").save(db)
-    Students.nombre_completo = "JOSE FRANCISCO MEJIA"
+
 
     Careers.delete_all(db)
     Careers.save_all(db)
+    #En lugar de pipeline.create_careers()
     Careers("mecatronica", "444").save(db)
-    Careers.nombre = "MECATROTRONICA"
+
 
     Courses.delete_all(db)
     Courses.save_all(db)
+    #para crear una carrera
     Courses("Programacion Orientada a Objetos", "999").save(db)
 
     Enrollments.delete_all(db)
     Enrollments.save_all(db)
-
-    # pipeline = Dataprocess(DATA)
-    # pipeline.create_careers()
-    # pipeline.create_students()
     # pipeline.create_enrollments()
+    Enrollments("Juan", "Lectura", True).save(db)
+
+
+
+
+
+    #imprimimos nuestro reporte
+    Enrollments.get_report_courses(db)
 
     print("Bienvenido a la DB")
     return True
