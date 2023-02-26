@@ -44,20 +44,35 @@ class Courses:
         collection = db["Courses"]
         collection.delete_many({})
 
+
     @staticmethod
     def save_all(db):
         collection = db["Courses"]
-        name_courses = []
         
+        course_unic = set()
         for obj in DATA:
-            
-            for course in obj["cursos_aprobados"]:
-                if course not in name_courses:
-                    name_courses.append(course)
-            
-            for course in obj["cursos_reprobados"]:
-                if course not in name_courses:
-                    name_courses.append(course)
+            for course in obj["cursos_aprobados"] + obj["cursos_reprobados"]:
+                if course not in course_unic:
+                    collection.insert_one({"name_course": course})
+                    course_unic.add(course)
+
+        for document in collection.find():
+            print(document)
+
+    # @staticmethod
+    # def save_all(db):
+    #     collection = db["Courses"]
+    #     name_courses = []
         
-        document = {"name_course": name_courses}
-        collection.insert_one(document)
+    #     for obj in DATA:
+            
+    #         for course in obj["cursos_aprobados"]:
+    #             if course not in name_courses:
+    #                 name_courses.append(course)
+            
+    #         for course in obj["cursos_reprobados"]:
+    #             if course not in name_courses:
+    #                 name_courses.append(course)
+        
+    #     document = {"name_course": name_courses}
+    #     collection.insert_one(document)

@@ -1,4 +1,13 @@
 from classes.data import DATA
+from classes.Careers import Careers
+from classes.Courses import Courses
+from classes.Students import Students
+from classes.Enrollments import Enrrolments
+from classes.DbMongo import DbMongo
+import pymongo
+
+
+
 
 class Dataprocess:
 
@@ -12,13 +21,33 @@ class Dataprocess:
     def create_courses(self):
         ## Do something to create courses on your mongodb collection using __data
         return True
-    def create_students(self):
+    def create_students(self , numero_cuenta, nombre_completo, cursos_aprobados, cursos_reprobados, edad, carrera, id =""):
         ## Do something to create students on your mongodb collection using __data
+        # collection = db["Students"]
+        # estudiante = {"numero_cuenta":numero_cuenta,
+        #                 "nombre_completo":nombre_completo,
+        #                 "cursos_aprobados":cursos_aprobados,
+        #                 "cursos_reprobados":cursos_reprobados,
+        #                 "edad":edad,
+        #                 "carrera":carrera,
+        #                 "__id" :id
+        #                 "collection" = "Students"}
+        # collection.insert_one(estudiante)
+
         return True
     def create_enrollments(self):
         ## Do something to create enrollments on your mongodb collection using __data
         return True
-    
+
+
+
+
+
+
+
+
+
+
 
     def save(self, db):
         collection = db[self.__collection]
