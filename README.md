@@ -1,7 +1,25 @@
 # Examen OOP I
 
 <p align="center">
-  <img src="head.jpg" alt="Python and Mongo" style="text-align:center" />
+  <img src=".img/ExamenPOO.png" alt="Datos Generales" style="text-align:center" />
+</p>
+<p align="center">
+  <img src="img/Careers.PNG" alt="Python and Mongo" style="text-align:center" />
+</p>
+<p align="center">
+  <img src="..img/Courses.PNG" alt="Python and Mongo" style="text-align:center" />
+</p>
+<p align="center">
+  <img src="Students.PNG" alt="Python and Mongo" style="text-align:center" />
+</p>
+<p align="center">
+  <img src="" alt="Python and Mongo" style="text-align:center" />
+</p>
+<p align="center">
+  <img src="#" alt="Python and Mongo" style="text-align:center" />
+</p>
+<p align="center">
+  <img src="#" alt="Python and Mongo" style="text-align:center" />
 </p>
 
 En este proyectos cargamos mediante un proceso BATCH hecho en python los datos que se encuentran en ``` classes.data.DATA ``` en diferentes collections de una MongoDB
@@ -10,20 +28,9 @@ Note que en el archivo ```app.py``` ya se encuentra cargada en una variable ```d
 
 la variable DATA que ya se cargo en el ```main``` es una arreglo donde cada objeto tiene la siguiente estructura:
 
-```python
 
-{
-    'numero_cuenta': 4069666
-    , 'nombre_completo': 'Lucía 1390 Sánchez 1390'
-    , 'cursos_aprobados': ['Ciencias políticas', 'Derecho', 'Geografía', 'Cine']
-    , 'cursos_reprobados': ['Veterinaria', 'Ciencias políticas', 'Biología']
-    , 'edad': 24
-    , 'carrera': 'Psicología'
-}
 
-```
-
-## Procedimiento solicitado:
+## Colecciones:
 
 De esa estructura debe de crear las siguientes clases, recuerde que en clases no creamos atributos que fueran multivaluados o arreglos, procure que todos los atributos se valores y recuerde que debe de exister una relacion entre estas clases. (10 puntos):
 - Careers 
