@@ -33,6 +33,7 @@ def main():
 
     #imprimimos nuestro reporte
     Enrollments.get_report_courses(db)
+    Enrollments.get_report_careers(db)
 
     print("Bienvenido a la DB")
     return True

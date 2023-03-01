@@ -43,6 +43,3 @@ class Courses:
                     collection.insert_one({"name_course": course})
                     #agregamos el curso al course_unic para que sea otro de los cursos que no hay que duplicar
                     course_unic.add(course)
-
-        # for document in collection.find():
-        #     print(document)

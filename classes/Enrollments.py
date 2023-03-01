@@ -76,3 +76,20 @@ class Enrollments:
                     reprobados += 1
             #mandamos a imprimir a la terminal nuestro reporte
             print("curso:",course, ", aprobados:", aprobados,", reprobados:", reprobados)
+
+
+    @staticmethod
+    def get_report_careers(db):
+        collection = db["Enrollments"]
+        reportCareers = {}
+        for student in DATA:
+            #asignamos en career todas las carreras de DATA
+            career = student["carrera"]
+            #usamos el metodo get para que no se repitan las carreras
+            if career in reportCareers:
+                students = reportCareers[career]
+            else:
+                students = 0
+        #imprimimos el reporte
+        for career, students in reportCareers.items():
+            print("{carrera:", career, ", Estudiantes:", students,"}")
